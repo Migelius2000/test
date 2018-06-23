@@ -20,5 +20,5 @@ vlans1 = command1.split(',')
 vlans2 = command2.split(',')
 vlans1 = [int(vlans1[i]) for i in range(5)]
 vlans2 = [int(vlans2[i]) for i in range(4)]
-vlans_union = list(set(vlans1) & set(vlans2))
-print(vlans_union)
+vlans_intersecton = list(set(vlans1) & set(vlans2))
+print(vlans_intersecton)
