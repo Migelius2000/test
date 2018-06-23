@@ -23,5 +23,6 @@ vlans2 = vlans2.split(',')
 vlans1 = [int(vlans1[i]) for i in range(6)]
 vlans2 = [int(vlans2[i]) for i in range(5)]
 
+
 vlans_intersecton = list(set(vlans1) & set(vlans2))
 print(vlans_intersecton)
