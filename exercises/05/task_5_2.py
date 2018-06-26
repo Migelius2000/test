@@ -47,3 +47,4 @@ london_co = {
         'routing': True
     }
 }
+device = input('Введите имя устройства: ')
