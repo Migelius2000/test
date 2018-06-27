@@ -23,3 +23,25 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
+
+def get_int_vlan_map(cfg_file):
+    with open(cfg_file) as f:
+        ports_dict={}
+        ports_dict['access']={}
+        ports_dict['trunk']={}
+        for line in f:
+            if 'interface FastEthernet' in line:
+                interface = line.split()[-1]
+            elif 'switchport mode access' in line:
+                ports_dict['access'][interface]=1
+            elif 'switchport access vlan' in line:
+                vlan = line.split()[-1]
+                ports_dict['access'][interface]=int(vlan)
+            elif 'trunk allowed vlan' in line:
+                vlans_str = line.split()[-1]
+                vlans = [int(i) for i in vlans_str.split(',')]
+                ports_dict['trunk'][interface]=vlans            
+    return ports_dict
+
+print(get_int_vlan_map('config_sw2.txt')['access'])
+print(get_int_vlan_map('config_sw2.txt')['trunk'])

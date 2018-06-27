@@ -36,3 +36,6 @@ def ignore_command(command, ignore):
     * False - если нет
     '''
     return any(word in command for word in ignore)
+
+def commands_dict(cfg_file, ignore_cmd):
+    
