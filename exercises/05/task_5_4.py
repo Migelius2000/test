@@ -17,3 +17,12 @@ num_list = [10, 2, 30, 100, 10, 50, 11, 30, 15, 7]
 word_list = [
     'python', 'ruby', 'perl', 'ruby', 'perl', 'python', 'ruby', 'perl'
 ]
+
+print(num_list)
+num_list.append('*')
+num = input('Введите число из списка: ')
+print('Последний раз встречается с индексом: ', num_list.index('*') - num_list[::-1].index(int(num)))
+print(word_list)
+word_list.append('*')
+word = input('Введите слово из списка: ')
+print('Последний раз встречается с индексом: ', word_list.index('*') - word_list[::-1].index(word))
