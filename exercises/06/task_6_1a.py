@@ -30,7 +30,7 @@ except ValueError:
 except IndexError:
     print('Incorrect IPv4 address')
 else:
-    if octets[0]<0 or octets[0]>255 or octets[1]<0 or octets[1]>255 or octets[2]<0 or octets[2]>255 or octets[3]<0 or octets[3]>255:
+    if octets[0] not in range(256) or octets[1] not in range(256) or octets[2] not in range(256) or octets[3] not in range(256) or len(octets)>4:
         print('Incorrect IPv4 address')
     else:
         if octets[0] >= 1 and octets[0] <= 223:

@@ -10,9 +10,11 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
-ip_addr = input('Введите IP-адрес в формате xxx.xxx.xxx.xxx: ')
-octets = ip_addr.split('.')
-while True:
+
+flag = 'Incorrect IPv4 address'
+while flag == 'Incorrect IPv4 address':
+    ip_addr = input('Введите IP-адрес в формате xxx.xxx.xxx.xxx: ')
+    octets = ip_addr.split('.')
     try:
         octets[0] = int(octets[0])
         octets[1] = int(octets[1])
@@ -23,20 +25,17 @@ while True:
     except IndexError:
         print('Incorrect IPv4 address')
     else:
-        for i in octets:
-            if i<0 or i>255:
-                print('Incorrect IPv4 address')
+        if octets[0] not in range(256) or octets[1] not in range(256) or octets[2] not in range(256) or octets[3] not in range(256) or len(octets)>4:
+            print('Incorrect IPv4 address')
+        else:
+            if octets[0] >= 1 and octets[0] <= 223:
+                print('unicast')
+            elif octets[0] >= 224 and octets[0] <= 239:
+                print('multicast')
+            elif ip_addr == '255.255.255.255':
+                print('local broadcast')
+            elif ip_addr == '0.0.0.0' :
+                print('unassigned')
             else:
-                if octets[0] >= 1 and octets[0] <= 223:
-                    print('unicast')
-                elif octets[0] >= 224 and octets[0] <= 239:
-                    print('multicast')
-                elif ip_addr == '255.255.255.255':
-                    print('local broadcast')
-                elif ip_addr == '0.0.0.0' :
-                    print('unassigned')
-                else:
-                    print('unused')
-            break
-        break
-    ip_addr = input('Введите IP-адрес в формате xxx.xxx.xxx.xxx: ')
+                print('unused')
+            flag = 'Correct IPv4 address'
